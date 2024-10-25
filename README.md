@@ -1,15 +1,27 @@
-# java-rmi-calculator-
+# Java RMI Calculator
 
-Primeiro de tudo, colocar todas essas quatro classes dentro da pasta bin do JDK. Vamos supor que a nossa pasta JDK está dentro da pasta java na unidade E:, agora com o prompt de comando aberto executamos o seguinte:
+## Introdução
+Este projeto implementa um servidor de calculadora usando Java RMI (Remote Method Invocation). O objetivo é demonstrar a criação e o uso de um serviço remoto simples.
 
-cd e:
-cd Java \ jdk1.6.0_23 \ bin
+## Requisitos
+- Java Development Kit (JDK) 1.6 ou superior
+- Configuração do PATH para incluir o diretório `bin` do JDK
+
+## Instruções
+
+### 1. Preparação
+Coloque as seguintes classes dentro da pasta `bin` do JDK:
+- `Calculator.java`
+- `CalculatorImpl.java`
+- `CalculatorServer.java`
+- `CalculatorClient.java`
+
+### 2. Compilação
+Abra o prompt de comando e navegue até o diretório do JDK:
+```sh
+cd E:\Java\jdk1.6.0_23\bin
 javac Calculator.java
-javac CalculatorImple.java
+javac CalculatorImpl.java
 javac CalculatorServer.java
 javac CalculatorClient.java
-rmic CalculatorImple
-iniciar registro RMI
-java CalculatorServer
-Abrir outro prompt de comando e novamente ir para mesmo caminho e: \ java1 \ jdk1.6.0_23 \ bin
-java CalculatorClient
+rmic CalculatorImpl
