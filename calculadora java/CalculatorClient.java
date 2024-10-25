@@ -1,40 +1,22 @@
-import java.rmi.Naming;
-import java.rmi.RemoteException;
 import java.net.MalformedURLException;
+import java.rmi.Naming;
 import java.rmi.NotBoundException;
-
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 public class CalculatorClient {
-public static void main(String[] args) {
-float num1 = Integer.parseInt(args[0]);
-float num2 = Integer.parseInt(args[1]);
-try {
-Calculator c = (Calculator)
-Naming.lookup("rmi://localhost/CalculatorService");
-System.out.println( "The substraction of "+num1 +" and "+num2 +" is: "+ c.sub(num1, num2) );
-System.out.println( "The addition of "+num1 +" and "+ num2 +"is: "+c.add(num1, num2) );
-System.out.println( "The multiplication of "+num1 +" and "+num2 +" is: "+c.mul(num1, num2) );
-System.out.println( "The division of "+num1 +" and "+ num2 +"is: "+c.div(num1, num2) );
+    @SuppressWarnings({ "UseSpecificCatch", "unchecked" })
+    public static <Calculator> void main(String[] args) {
+        try {
+            Calculator calculator = (Calculator) extracted();
+            System.out.println("Adição: " + ((Object) calculator).add(20, 15));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static Remote extracted() throws NotBoundException, MalformedURLException, RemoteException {
+        return Naming.lookup("rmi://127.0.0.1:1020/CalculatorService");
+    }
 }
-catch (MalformedURLException murle) {
-System.out.println();
-System.out.println("MalformedURLException");
-System.out.println(murle);
-}
-catch (RemoteException re) {
-System.out.println();
-System.out.println("RemoteException");
-System.out.println(re);
-}
-catch (NotBoundException nbe) {
-System.out.println();
-System.out.println("NotBoundException");
-System.out.println(nbe);
-}
-catch (java.lang.ArithmeticException ae) {
-System.out.println();
-System.out.println("java.lang.ArithmeticException");
-System.out.println(ae);
-}
-}
-}
+
