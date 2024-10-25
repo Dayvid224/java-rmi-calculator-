@@ -1,27 +1,14 @@
-public class CalculatorImpl extends
-java.rmi.server.UnicastRemoteObject implements Calculator {
-// Implementations must have an explicit constructor
-// in order to declare the RemoteException exception
-public CalculatorImpl()
-throws java.rmi.RemoteException {
-super();
-}
-public float add(float a, float b)
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class CalculatorImpl extends UnicastRemoteObject implements Calculator {
+    protected CalculatorImpl() throws RemoteException {
+        super();
+    }
 
 
-throws java.rmi.RemoteException {
-return a + b;
+    public long add(long a, long b) throws RemoteException {
+        return a + b;
+    }
 }
-public float sub(float a, float b)
-throws java.rmi.RemoteException {
-return a - b;
-}
-public float mul(float a, float b)
-throws java.rmi.RemoteException {
-return a * b;
-}
-public float div(float a, float b)
-throws java.rmi.RemoteException {
-return a / b;
-}
-}
+
